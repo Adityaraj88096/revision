@@ -38,7 +38,7 @@ TopicCtrl.addTopic = async (req, res) => {
         console.log("Try ran...", data);
         if(!data[0]) {
             console.log("If ran");
-            const {data} = await Topics.insertOne(task);
+            const {data} = await Topics.save(task);
             res.status(200).send(data);
         }
         else {
@@ -51,7 +51,7 @@ TopicCtrl.addTopic = async (req, res) => {
         }
     } catch (error) {
         console.log("Catch ran...")
-        res.status(200).send({ Message: "Internal database error" })
+        res.status(200).send({ Message: "Internal database error", error: error })
     }
 }
 
