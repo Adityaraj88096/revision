@@ -27,34 +27,35 @@ TopicCtrl.getTopics = async (req, res) => {
 TopicCtrl.addTopic = async (req, res) => {
     console.log("Post topic route calling...");
     console.log(req.body);
-    const topicsArray = [req.body.topic];
-    const task = {
-        topics: topicsArray,
-        date:  req.body.dates[0],
-    }
-    console.log(task)
-    try {
-        const data = await Topics.find({ date: req.body.dates[0] });
-        console.log("Try ran...", data);
-        if(!data[0]) {
-            console.log("If ran");
-            const data = await Topics.create(task);
-            console.log(data)
-            // console.log(data.data);
-            res.status(200).send(data);
+    
+        const topicsArray = [req.body.topic];
+        const task = {
+            topics: topicsArray,
+            date:  req.body.dates[0],
         }
-        else {
-            console.log("else ran");
-            const data = await Topics.updateOne({date: req.body.dates[0]}, 
-                {"$push": {topics: req.body.topic}}
-            );
-            console.log(data);
-            res.status(200).send(data);
+        console.log(task)
+        try {
+            const data = await Topics.find({ date: req.body.dates[i] });
+            console.log("Try ran...", data);
+            if(!data[0]) {
+                console.log("If ran");
+                const data = await Topics.create(task);
+                console.log(data)
+                // console.log(data.data);
+                res.status(200).send(data);
+            }
+            else {
+                console.log("else ran");
+                const data = await Topics.updateOne({date: req.body.dates[0]}, 
+                    {"$push": {topics: req.body.topic}}
+                );
+                console.log(data);
+                res.status(200).send(data);
+            }
+        } catch (error) {
+            console.log("Catch ran...", error)
+            res.status(200).send({ Message: "Internal database error", error })
         }
-    } catch (error) {
-        console.log("Catch ran...", error)
-        res.status(200).send({ Message: "Internal database error", error })
-    }
 }
 
 
