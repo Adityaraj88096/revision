@@ -38,7 +38,9 @@ TopicCtrl.addTopic = async (req, res) => {
         console.log("Try ran...", data);
         if(!data[0]) {
             console.log("If ran");
-            const {data} = await Topics.save(task);
+            const data = await Topics.save(task);
+            console.log(data)
+            // console.log(data.data);
             res.status(200).send(data);
         }
         else {
