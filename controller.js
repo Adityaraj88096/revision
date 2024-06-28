@@ -36,7 +36,7 @@ TopicCtrl.addTopic = async (req, res) => {
     try {
         const data = await Topics.find({ date: req.body.dates[0] });
         console.log("Try ran...", data);
-        if(data == undefined) {
+        if(!data[0]) {
             console.log("If ran");
             const {data} = await Topics.insertOne(task);
             res.status(200).send(data);
