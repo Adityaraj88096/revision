@@ -1,4 +1,4 @@
-const Topics = require('./model');
+const Pyqs = require('./model');
 const TopicCtrl = {};
 
 TopicCtrl.getAllTopics = async (req, res) => {
@@ -11,11 +11,12 @@ TopicCtrl.getAllTopics = async (req, res) => {
         res.status(200).send({ Message: "Internal database error", response: error })
     }
 }
-TopicCtrl.getTopics = async (req, res) => {
+TopicCtrl.getPyq = async (req, res) => {
     console.log("Get topics route calling...");
-    console.log(req.params.date);
+    const { exam, year } = (req.params);
+    console.log(`exam ${exam}, year ${year}`)
     try {
-        const data = await Topics.findOne({ date: req.params.date });
+        const data = await Pyqs.findOne({ exam: exam, year: year });
         console.log(data);
         res.status(200).send(data);
     } catch (error) {
@@ -24,38 +25,20 @@ TopicCtrl.getTopics = async (req, res) => {
 }
 
 // Post Routes
-TopicCtrl.addTopic = async (req, res) => {
+TopicCtrl.addPyq = async (req, res) => {
     console.log("Post topic route calling...");
     console.log(req.body);
-    
-        const topicsArray = [req.body.topic];
-        const task = {
-            topics: topicsArray,
-            date:  req.body.dates[0],
-        }
-        console.log(task)
-        try {
-            const data = await Topics.find({ date: req.body.dates[0] });
-            console.log("Try ran...", data);
-            if(!data[0]) {
-                console.log("If ran");
-                const data = await Topics.create(task);
-                console.log(data)
-                // console.log(data.data);
-                res.status(200).send(data);
-            }
-            else {
-                console.log("else ran");
-                const data = await Topics.updateOne({date: req.body.dates[0]}, 
-                    {"$push": {topics: req.body.topic}}
-                );
-                console.log(data);
-                res.status(200).send(data);
-            }
-        } catch (error) {
-            console.log("Catch ran...", error)
-            res.status(200).send({ Message: "Internal database error", error })
-        }
+    try {
+        const result = await Pyqs.create(req.body);
+        console.log(result)
+        // console.log(data.data);
+        res.status(200).send(result);
+        console.log(data);
+        // res.status(200).send(data);
+    } catch (error) {
+    console.log("Catch ran...", error)
+    res.status(200).send({ Message: "Internal database error", error })
+}
 }
 
 
