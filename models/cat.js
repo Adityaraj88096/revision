@@ -1,22 +1,31 @@
 const mongoose = require('mongoose');
-const UpscSchema = mongoose.Schema({
+const CatSchema = mongoose.Schema({
     exam: {
-        type: String,
-    },
-    subject: {
-        type: String,
-        default: null
+        type: String,  //Exam Name such as CAT/XAT/CMAT etc.
+        required: true,
     },
     type: {
-        type: String,
+        type: String, //Pyq or mock
+        required: true
+    },
+    subtype: {
+        type: String, //Full or topic wise
+        required: true,
+    },
+    set:{
+        type: String, //Set name
+        required: true,
+    },
+    subject: {
+        type: String, //If it is a topic wise test
+        default: null
+    },
+    year: {
+        type: String, //Year of exam
         default: null,
     },
-    pyq: {
-        type: String,
-        default: true,
-    },
     time: {
-        type: Number,
+        type: Number, //Length of test
         default: null,
     },
     questionArray: {
@@ -27,9 +36,9 @@ const UpscSchema = mongoose.Schema({
                     required: true
                 },
                 additionalOptionA: {
-                    type: String,
-                    required: false,
-                    default: null
+                            type: String,
+                            required: false,
+                            default: null
                 },
                 additionalOptionB: {
                     type: String,
@@ -87,5 +96,5 @@ const UpscSchema = mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Upsc', UpscSchema);
+module.exports = mongoose.model('Cat', CatSchema);
 
