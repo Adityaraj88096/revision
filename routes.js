@@ -1,8 +1,8 @@
 const express = require("express");
-const { getPyq, addPyq, getAllTopics} = require('./controller');
+const { getUpscPyq, addUpscPyq} = require('./controller');
 const topicRouter = express.Router();
 // topicRouter.get('/topics', getAllTopics);
-topicRouter.get('/topics/pyq/:exam/:year', getPyq);
-topicRouter.post('/topic', addPyq);
+topicRouter.get('/:exam/:type/:subtype/:year/:set', getUpscPyq);
+topicRouter.post('/addupscpyq', addUpscPyq);
 
 module.exports = topicRouter;

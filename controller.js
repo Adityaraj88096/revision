@@ -1,39 +1,39 @@
-const Pyqs = require('./model');
-const TopicCtrl = {};
+const upsc = require('./models/upsc');
+const TestCtrl = {};
 
-TopicCtrl.getAllTopics = async (req, res) => {
-    console.log("Get all topics route calling...");
+// TestCtrl.getAllTests = async (req, res) => {
+//     console.log("Get all Tests route calling...");
+//     try {
+//         const data = await Tests.find();
+//         console.log(data)
+//         res.status(200).send(data);
+//     } catch (error) {
+//         res.status(200).send({ Message: "Internal database error", response: error })
+//     }
+// }
+TestCtrl.getUpscPyq = async (req, res) => {
+    console.log("Get Tests route calling...");
+    const { exam, type, subtype, set, year } = (req.params);
+    console.log(typeof(year));
+    console.log(`exam - ${exam}, year - ${year}, type - ${type}, subtype - ${subtype}, set - ${set}`);
     try {
-        const data = await Topics.find();
-        console.log(data)
-        res.status(200).send(data);
-    } catch (error) {
-        res.status(200).send({ Message: "Internal database error", response: error })
-    }
-}
-TopicCtrl.getPyq = async (req, res) => {
-    console.log("Get topics route calling...");
-    const { exam, year } = (req.params);
-    console.log(`exam ${exam}, year ${year}`)
-    try {
-        const data = await Pyqs.findOne({ exam: exam, year: year });
+        const data = await upsc.findOne({ exam: exam, type: type, subtype: subtype, set: set, year: year});
         console.log(data);
         res.status(200).send(data);
     } catch (error) {
-        res.status(200).send({ Message: "Internal database error" })
+        res.status(200).send({ Message: "Internal database error", error: error })
     }
 }
 
 // Post Routes
-TopicCtrl.addPyq = async (req, res) => {
-    console.log("Post topic route calling...");
+TestCtrl.addUpscPyq = async (req, res) => {
+    console.log("Post Test route calling...");
     console.log(req.body);
     try {
-        const result = await Pyqs.create(req.body);
+        const result = await upsc.create(req.body);
         console.log(result)
-        // console.log(data.data);
         res.status(200).send(result);
-        console.log(data);
+        // console.log(data);
         // res.status(200).send(data);
     } catch (error) {
     console.log("Catch ran...", error)
@@ -43,4 +43,4 @@ TopicCtrl.addPyq = async (req, res) => {
 
 
 
-module.exports = TopicCtrl;
+module.exports = TestCtrl;
