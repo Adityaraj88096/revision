@@ -1,4 +1,4 @@
-const upsc = require('./models/upsc');
+const upsc = require('../models/upsc');
 const TestCtrl = {};
 TestCtrl.getAllUpscTestPapers = async(req, res) => {
     console.log({exam}) = (req.params);
@@ -9,7 +9,7 @@ TestCtrl.getAllUpscTestPapers = async(req, res) => {
     } catch (error) {
         res.send(200).send({ message : `Internal error : ${error}`});
     }
-}
+};
 TestCtrl.getUpscPyq = async (req, res) => {
     console.log("Get Tests route calling...");
     const { exam, type, subtype, set, year } = (req.params);
