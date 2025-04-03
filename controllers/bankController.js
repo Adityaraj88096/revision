@@ -1,7 +1,7 @@
 const bank = require('../models/bank');
 const TestCtrl = {};
 TestCtrl.getAllBankTestPapers = async(req, res) => {
-    console.log({exam}) = (req.params);
+    const {exam} = (req.params);
     try{
         const data = await bank.find({exam: exam});
         console.log("All tests fetched", data);

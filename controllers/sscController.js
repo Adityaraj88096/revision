@@ -1,7 +1,7 @@
 const ssc = require('../models/ssc');
 const TestCtrl = {};
 TestCtrl.getAllSscTestPapers = async(req, res) => {
-    console.log({exam}) = (req.params);
+    const {exam} = (req.params);
     try{
         const data = await ssc.find({exam: exam});
         console.log("All tests fetched", data);
