@@ -1,7 +1,7 @@
 const upsc = require('../models/upsc');
 const TestCtrl = {};
 TestCtrl.getAllUpscTestPapers = async(req, res) => {
-    console.log({exam}) = (req.params);
+    const {exam} = (req.params);
     try{
         const data = await upsc.find({exam: exam});
         console.log("All tests fetched", data);
