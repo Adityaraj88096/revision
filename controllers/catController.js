@@ -1,5 +1,15 @@
 const cat = require('../models/cat');
 const TestCtrl = {};
+TestCtrl.getAllCatTestPapers = async(req, res) => {
+    console.log({exam}) = (req.params);
+    try{
+        const data = await cat.find({exam: exam});
+        console.log("All tests fetched", data);
+        res.status(200).send(data);
+    } catch (error) {
+        res.send(200).send({ message : `Internal error : ${error}`});
+    }
+}
 TestCtrl.getCatPyq = async (req, res) => {
     console.log("Get Tests route calling...");
     const { exam, type, subtype, set, year } = (req.params);
@@ -10,7 +20,7 @@ TestCtrl.getCatPyq = async (req, res) => {
         console.log(data);
         res.status(200).send(data);
     } catch (error) {
-        res.status(200).send({ Message: "Internal database error", error: error })
+        res.send(200).send({ message : `Internal error : ${error}`});
     }
 }
 
@@ -26,7 +36,7 @@ TestCtrl.addCatPyq = async (req, res) => {
         // res.status(200).send(data);
     } catch (error) {
     console.log("Catch ran...", error)
-    res.status(200).send({ Message: "Internal database error", error })
+    res.send(200).send({ message : `Internal error : ${error}`});
 }
 }
 
