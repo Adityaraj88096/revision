@@ -60,6 +60,16 @@ const CatSchema = mongoose.Schema({
                     required: false,
                     default: null
                 },
+                additionalOptionE: {
+                    type: String,
+                    required: false,
+                    default: null
+                },
+                additionalQuestion: {
+                    type: String,
+                    required: false,
+                    default: null,
+                },
                 a: {
                     type: String,
                     required: false,

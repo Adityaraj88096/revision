@@ -65,6 +65,11 @@ const SscSchema = mongoose.Schema({
                     required: false,
                     default: null
                 },
+                additionalQuestion: {
+                    type: String,
+                    required: false,
+                    default: null,
+                },
                 a: {
                     type: String,
                     required: false,
