@@ -35,6 +35,11 @@ const BankSchema = mongoose.Schema({
                     type: String,
                     required: true
                 },
+                image: {
+                    type: String,
+                    required: false,
+                    default: null
+                },
                 additionalOptionA: {
                             type: String,
                             required: false,
