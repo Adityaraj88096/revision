@@ -40,67 +40,46 @@ const SscSchema = mongoose.Schema({
                     required: false,
                     default: null
                 },
-                additionalOptionA: {
-                    type: String,
-                    required: false,
-                    default: null
-                },
-                additionalOptionB: {
-                    type: String,
-                    required: false,
-                    default: null
-                },
-                additionalOptionC: {
-                    type: String,
-                    required: false,
-                    default: null
-                },
-                additionalOptionD: {
-                    type: String,
-                    required: false,
-                    default: null
-                },
-                additionalOptionE: {
-                    type: String,
-                    required: false,
-                    default: null
-                },
                 additionalQuestion: {
                     type: String,
                     required: false,
                     default: null,
                 },
-                a: {
+                additionalOptions: {
+                    type: [
+                        {
+                            statement: {
+                                type: String,
+                                required: false,
+                                default: null
+                            }
+                        },
+                    ],
+                    default: []
+                },
+                options: {
+                    type: [
+                        {
+                            notation:{
+                                type: String,
+                                required: false,
+                                default: null
+                            },
+                            statement: {
+                                type: String,
+                                required: false,
+                                default: null
+                            },
+                        },
+                    ],
+                    default: [],
+                },
+         answer: {
                     type: String,
                     required: false,
                     default: null
                 },
-                b: {
-                    type: String,
-                    required: false,
-                    default: null
-                },
-                c: {
-                    type: String,
-                    required: false,
-                    default: null
-                },
-                d: {
-                    type: String,
-                    required: false,
-                    default: null
-                },
-                e: {
-                    type: String,
-                    required: false,
-                    default: null
-                },
-                ans: {
-                    type: String,
-                    required: false,
-                    default: null
-                },
-                exp: {
+                explaination: {
                     type: String,
                     required: false,
                     default: null

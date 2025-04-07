@@ -5,7 +5,7 @@ const { getSscPyq, addSscPyq, getAllSscTestPapers } = require("./controllers/ssc
 const { getBankPyq, getAllBankTestPapers, addBankPyq } = require("./controllers/bankController");
 const topicRouter = express.Router();
 // topicRouter.get('/topics', getAllTopics);
-topicRouter.get('/upsc/:exam/:type/:subtype/:year/:set', getUpscPyq);
+topicRouter.get('/:body/:exam/:type/:subtype/:year/:set', getUpscPyq);
 topicRouter.get('/cat/:exam/:type/:subtype/:year/:set', getCatPyq);
 topicRouter.get('/ssc/:exam/:type/:subtype/:year/:set', getSscPyq);
 topicRouter.get('/bank/:exam/:type/:subtype/:year/:set', getBankPyq);

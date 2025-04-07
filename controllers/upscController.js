@@ -10,7 +10,7 @@ TestCtrl.getAllUpscTestPapers = async(req, res) => {
     }
 };
 TestCtrl.getUpscPyq = async (req, res) => {
-    const { exam, type, subtype, set, year } = (req.params);
+    const {body, exam, type, subtype, set, year } = (req.params);
     try {
         const data = await upsc.findOne({ exam: exam, type: type, subtype: subtype, set: set, year: year});
         res.status(200).send(data);
