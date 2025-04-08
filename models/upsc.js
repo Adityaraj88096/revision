@@ -40,22 +40,20 @@ const UpscSchema = mongoose.Schema({
                     required: false,
                     default: null
                 },
+                additionalOptions: {
+                    type: [
+                        {
+                                type: String,
+                                required: false,
+                                default: null
+                        },
+                    ],
+                    default: []
+                },
                 additionalQuestion: {
                     type: String,
                     required: false,
                     default: null,
-                },
-                additionalOptions: {
-                    type: [
-                        {
-                            statement: {
-                                type: String,
-                                required: false,
-                                default: null
-                            }
-                        },
-                    ],
-                    default: []
                 },
                 options: {
                     type: [

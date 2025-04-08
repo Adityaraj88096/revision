@@ -47,12 +47,10 @@ const SscSchema = mongoose.Schema({
                 },
                 additionalOptions: {
                     type: [
-                        {
-                            statement: {
+                            {
                                 type: String,
                                 required: false,
                                 default: null
-                            }
                         },
                     ],
                     default: []
