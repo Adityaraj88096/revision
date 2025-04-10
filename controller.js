@@ -43,6 +43,28 @@ testCtrl.getAllPapersByExamType = async (req, res) => {
         res.status(500).send({ message: `Internal error : ${error}` });
     }
 }
+
+// This route is I was working on previous night
+testCtrl.getPaperByExamId = async (req, res) => {
+    const {body, exam, id} = req.params;
+    try {
+        if(body == 'upsc') {
+        const data = await upsc.find({ exam: exam, _id: id });
+        res.status(200).send(data);
+        } else if(body == 'cat'){
+            const data = await cat.find({ exam: exam, _id: id });
+            res.status(200).send(data);
+        } else if(body == 'bank') {
+            const data = await bank.find({ exam: exam, _id: id });
+            res.status(200).send(data);
+        } else if(body == 'ssc') {
+            const data = await ssc.find({ exam: exam, _id: id });
+            res.status(200).send(data);
+        }
+    } catch (error) {
+        res.status(500).send({ message: `Internal error : ${error}` });
+    }
+}
 testCtrl.getIndividualPaper = async (req, res) => {
     const {body, exam, type, subtype, year, set} = req.params;
     try {
