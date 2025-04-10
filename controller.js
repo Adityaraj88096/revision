@@ -47,18 +47,19 @@ testCtrl.getAllPapersByExamType = async (req, res) => {
 // This route is I was working on previous night
 testCtrl.getPaperByExamId = async (req, res) => {
     const {body, exam, id} = req.params;
+    console.log(`Exam = ${exam}, Body = ${body}, Id = ${id}`);
     try {
         if(body == 'upsc') {
-        const data = await upsc.find({ exam: exam, _id: ObjectId(id) });
+        const data = await upsc.find({ exam: exam, _id: id });
         res.status(200).send(data);
         } else if(body == 'cat'){
-            const data = await cat.find({ exam: exam, _id: ObjectId(id) });
+            const data = await cat.find({ exam: exam, _id: id });
             res.status(200).send(data);
         } else if(body == 'bank') {
-            const data = await bank.find({ exam: exam, _id: ObjectId(id) });
+            const data = await bank.find({ exam: exam, _id: id });
             res.status(200).send(data);
         } else if(body == 'ssc') {
-            const data = await ssc.find({ exam: exam, _id: ObjectId(id) });
+            const data = await ssc.find({ exam: exam, _id: id });
             res.status(200).send(data);
         }
     } catch (error) {
