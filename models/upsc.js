@@ -81,7 +81,17 @@ const UpscSchema = mongoose.Schema({
                     type: String,
                     required: false,
                     default: null
-                }
+                },
+         correct: {
+            type: Number,
+            required: false,
+            default: null
+         },
+         incorrect: {
+            type: Number,
+            required: false,
+            default: null
+         }
             }
         ],
         default: []

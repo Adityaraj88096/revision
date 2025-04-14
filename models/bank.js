@@ -12,7 +12,7 @@ const BankSchema = mongoose.Schema({
         type: String, //Full or topic wise
         required: true,
     },
-    set:{
+    set: {
         type: String, //Set name
         required: true,
     },
@@ -48,10 +48,10 @@ const BankSchema = mongoose.Schema({
                 additionalOptions: {
                     type: [
                         {
-                                type: String,
-                                required: false,
-                                default: null
-                            
+                            type: String,
+                            required: false,
+                            default: null
+
                         },
                     ],
                     default: []
@@ -59,7 +59,7 @@ const BankSchema = mongoose.Schema({
                 options: {
                     type: [
                         {
-                            notation:{
+                            notation: {
                                 type: String,
                                 required: false,
                                 default: null
@@ -73,13 +73,23 @@ const BankSchema = mongoose.Schema({
                     ],
                     default: [],
                 },
-         answer: {
+                answer: {
                     type: String,
                     required: false,
                     default: null
                 },
                 explaination: {
                     type: String,
+                    required: false,
+                    default: null
+                },
+                correct: {
+                    type: Number,
+                    required: false,
+                    default: null
+                },
+                incorrect: {
+                    type: Number,
                     required: false,
                     default: null
                 }
