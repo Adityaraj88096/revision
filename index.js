@@ -10,7 +10,8 @@ const port = process.env.PORT;
 
 connectDB();
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '20mb' })); // Increase the limit to 20mb
+// app.use(bodyParser.json());
 app.get('/', (req, res) => {
     res.send('The API setup is working fine so far.');
   });
