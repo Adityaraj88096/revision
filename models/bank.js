@@ -25,8 +25,12 @@ const BankSchema = mongoose.Schema({
         default: null,
     },
     time: {
-        type: Number, //Length of test
-        default: null,
+        type: [
+            {
+                type: Number,
+                default: null
+            }
+        ],
     },
     questionArray: {
         type: [

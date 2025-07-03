@@ -4,6 +4,7 @@ const ssc = require('./models/ssc');
 const upsc = require('./models/upsc');
 const testCtrl = {};
 testCtrl.getAllPapersByExam = async (req, res) => {
+    console.log("Request received for all papers by exam");
     const {body, exam, type, subtype, year, set} = req.params;
     try {
         if(body == 'upsc') {
@@ -24,6 +25,7 @@ testCtrl.getAllPapersByExam = async (req, res) => {
     }
 }
 testCtrl.getAllPapersByExamType = async (req, res) => {
+    console.log("Request received for all papers by exam type");
     const {body, exam, type, subtype, year, set} = req.params;
     try {
         if(body == 'upsc') {
@@ -67,6 +69,8 @@ testCtrl.getPaperByExamId = async (req, res) => {
     }
 }
 testCtrl.getIndividualPaper = async (req, res) => {
+    console.log("Individual Paper Request Received");
+    console.log(req.params);
     const {body, exam, type, subtype, year, set} = req.params;
     try {
         if(body == 'upsc') {

@@ -25,8 +25,12 @@ const CatSchema = mongoose.Schema({
         default: null,
     },
     time: {
-        type: Number, //Length of test
-        default: null,
+        type: [
+            {
+                type: Number,
+                default: null
+            }
+        ], //Length of test or multiple sections length
     },
     questionArray: {
         type: [
