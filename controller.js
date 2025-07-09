@@ -1,5 +1,6 @@
 const bank = require('./models/bank');
 const cat = require('./models/cat');
+const countdown = require('./models/countdown');
 const ssc = require('./models/ssc');
 const upsc = require('./models/upsc');
 const testCtrl = {};
@@ -115,6 +116,15 @@ testCtrl.addTestPaper = async (req, res) => {
         }
     } catch (error) {
         res.status(500).send({ message: `Internal error : ${error}` });
+    }
+}
+testCtrl.fetchCountdown = async(req, res) => {
+    try{
+        const result = await countdown.find()
+        console.log(result);
+        res.status(200).send(result);
+    } catch(err) {
+        console.log(err)
     }
 }
 module.exports = testCtrl
