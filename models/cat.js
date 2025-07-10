@@ -88,12 +88,12 @@ const CatSchema = mongoose.Schema({
                     default: null
                 },
                 correct: {
-                    type: Double,
+                    type: Number,
                     required: false,
                     default: null
                  },
                  incorrect: {
-                    type: Double,
+                    type: Number,
                     required: false,
                     default: null
                  }
