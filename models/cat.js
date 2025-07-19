@@ -1,112 +1,6 @@
-// const mongoose = require('mongoose');
-// const CatSchema = mongoose.Schema({
-//     exam: {
-//         type: String,  //Exam Name such as CAT/XAT/CMAT etc.
-//         required: true,
-//     },
-//     type: {
-//         type: String, //Pyq or mock
-//         required: true
-//     },
-//     subtype: {
-//         type: String, //Full or topic wise
-//         required: true,
-//     },
-//     set:{
-//         type: String, //Set name
-//         required: true,
-//     },
-//     subject: {
-//         type: String, //If it is a topic wise test
-//         default: null
-//     },
-//     year: {
-//         type: String, //Year of exam
-//         default: null,
-//     },
-//     time: {
-//         type: [
-//             {
-//                 type: Number,
-//                 default: null
-//             }
-//         ], //Length of test or multiple sections length
-//     },
-//     questionArray: {
-//         type: [
-//             {
-//                 q: {
-//                     type: String,
-//                     required: true
-//                 },
-//                 image: {
-//                     type: String,
-//                     required: false,
-//                     default: null
-//                 },
-//                 additionalQuestion: {
-//                     type: String,
-//                     required: false,
-//                     default: null,
-//                 },
-//                 additionalOptions: {
-//                     type: [
-//                         {
-                            
-//                                 type: String,
-//                                 required: false,
-//                                 default: null
-//                         },
-//                     ],
-//                     default: []
-//                 },
-//                 options: {
-//                     type: [
-//                         {
-//                             notation:{
-//                                 type: String,
-//                                 required: false,
-//                                 default: null
-//                             },
-//                             statement: {
-//                                 type: String,
-//                                 required: false,
-//                                 default: null
-//                             },
-//                         },
-//                     ],
-//                     default: [],
-//                 },
-//          answer: {
-//                     type: String,
-//                     required: false,
-//                     default: null
-//                 },
-//                 explaination: {
-//                     type: String,
-//                     required: false,
-//                     default: null
-//                 },
-//                 correct: {
-//                     type: Number,
-//                     required: false,
-//                     default: null
-//                  },
-//                  incorrect: {
-//                     type: Number,
-//                     required: false,
-//                     default: null
-//                  }
-//             }
-//         ],
-//         default: []
-//     }
-// });
-// module.exports = mongoose.model('Cat', CatSchema);
-
 const mongoose = require('mongoose');
 
-const QuestionSchema = mongoose.Schema({
+export const QuestionSchema = mongoose.Schema({
   q: { type: String, required: true },
   image: { type: String, default: null },
   additionalQuestion: { type: String, default: null },
@@ -129,7 +23,7 @@ const QuestionSchema = mongoose.Schema({
   incorrect: { type: Number, default: -1.0 }
 });
 
-const SectionSchema = mongoose.Schema({
+export const SectionSchema = mongoose.Schema({
   title: { type: String, required: true }, // e.g., "VARC", "DILR", "QA"
   time: { type: Number, required: true }, // in minutes
   questions: { type: [QuestionSchema], default: [] }
@@ -142,6 +36,7 @@ const CatSchema = mongoose.Schema({
   set: { type: String, required: true }, // Set name
   subject: { type: String, default: null }, // if topic-wise
   year: { type: String, default: null },
+  lockedSections: { type: Boolean, default: true},
   sections: { type: [SectionSchema], required: true } // NEW structure
 });
 
