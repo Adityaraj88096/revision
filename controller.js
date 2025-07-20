@@ -120,11 +120,22 @@ testCtrl.addTestPaper = async (req, res) => {
 }
 testCtrl.fetchCountdown = async(req, res) => {
     try{
-        const result = await countdown.find()
-        console.log(result);
+        const result = await countdown.find({ name: req.params.name, isActive: true })
         res.status(200).send(result);
     } catch(err) {
         console.log(err)
+    }
+}
+testCtrl.addCountDown = async(req, res) => {
+    const {name, category, phase, date, isActive} = req.body;
+    const [day, month, year] = date.split('-');
+    const dateFormatted = new Date(`${year}-${month}-${day}`);
+    try{
+        const result = await countdown.create({name:name, category:category,
+             phase: phase, date:dateFormatted, isActive: isActive});
+        res.status(200).send({message: "Successfully created.", result: result})
+    } catch(err) {
+        console.log("Error : ", err.message);
     }
 }
 module.exports = testCtrl
