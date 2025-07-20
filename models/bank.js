@@ -1,6 +1,5 @@
-const mongoose = require('mongoose');
-
-export const QuestionSchema = mongoose.Schema({
+const mongoose = require("mongoose");
+const QuestionSchema = mongoose.Schema({
   q: { type: String, required: true },
   image: { type: String, default: null },
   additionalQuestion: { type: String, default: null },
@@ -23,7 +22,7 @@ export const QuestionSchema = mongoose.Schema({
   incorrect: { type: Number, default: -1.0 }
 });
 
-export const SectionSchema = mongoose.Schema({
+const SectionSchema = mongoose.Schema({
   title: { type: String, required: true }, // e.g., "VARC", "DILR", "QA"
   time: { type: Number, required: true }, // in minutes
   questions: { type: [QuestionSchema], default: [] }
